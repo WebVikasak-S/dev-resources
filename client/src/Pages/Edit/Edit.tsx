@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Edit.css";
 import { withRouter, useHistory } from "react-router-dom";
 import { TextField, Button } from "@material-ui/core";
+import { db } from "../../db";
 
 export interface editvals {
   date_added: string;
@@ -25,7 +26,7 @@ const defaultvalues: editvals = {
 };
 
 const Edit: React.FC = (props: any) => {
-  const [values, setValues] = useState<editvals>(defaultvalues);
+  const [values, setValues] = useState<editvals | any>(defaultvalues);
   // const location = useLocation();
   const { data } = props.location.state;
   const history = useHistory();
@@ -34,15 +35,16 @@ const Edit: React.FC = (props: any) => {
   }, []);
 
   const getData = async () => {
-    const bookmarks = await axios.get(
-      `http://localhost:5000/bookmarks/${data}`
-    );
-    await setValues(bookmarks.data);
+    // const bookmarks = await axios.get(
+    //   `http://localhost:5000/bookmarks/${data}`
+    // );
+    const bookmarks = await db.bookmarks;
+    await setValues(bookmarks);
   };
 
   const handleChange = (event: any) => {
     event.persist();
-    setValues((values) => ({
+    setValues((values: any) => ({
       ...values,
       [event.target.name]: event.target.value,
     }));

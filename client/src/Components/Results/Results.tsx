@@ -86,16 +86,22 @@ const Results: React.FC<GridProps> = (props) => {
                   <span> #{bookmark.tags}</span>
                 </h5>
                 <br />
-                <Link
+                {/* <Link
                   to={{
                     pathname: "/edit",
                     state: {
-                      data: bookmark.id,
+                      id: bookmark.id,
                     },
                   }}
-                >
-                  <EditIcon />
-                </Link>
+                > */}
+                <EditIcon
+                  onClick={() => {
+                    alert(
+                      "Edit has been disabled since the Database is under work."
+                    );
+                  }}
+                />
+                {/* </Link> */}
               </div>
             ))}
         </div>

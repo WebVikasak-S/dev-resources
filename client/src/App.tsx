@@ -9,16 +9,26 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <Link to={'/'}><h1>Dev Resources</h1></Link>
-        <Link to={'/create'}><p>Create</p></Link>
+        <Link to={"/"}>
+          <h1>Dev Resources</h1>
+        </Link>
+        {/* <Link to={'/create'}> */}
+        <p
+          onClick={() => {
+            alert("Edit has been disabled since the Database is under work.");
+          }}
+        >
+          Create
+        </p>
+        {/* </Link> */}
       </header>
       <div className="main_window">
         <Switch>
-          <Route path={'/'} exact component={Grid}/>
-          <Route path={'/edit/:id'} exact component={Edit}/>
-          <Route path={'/create'} exact component={Create}/>
+          <Route path={"/"} exact component={Grid} />
+          <Route path={"/edit/:id"} exact component={Edit} />
+          <Route path={"/create"} exact component={Create} />
         </Switch>
-      </div> 
+      </div>
     </div>
   );
 };
