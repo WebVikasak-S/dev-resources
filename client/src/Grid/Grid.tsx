@@ -3,6 +3,7 @@ import "./Grid.css";
 import Results from "../Components/Results/Results";
 import Tags from "../Components/Tags/Tags";
 import axios from "axios";
+import { db } from "../db.js";
 export interface vals {
   date_added: string;
   guid: string;
@@ -13,19 +14,20 @@ export interface vals {
   tags: object;
 }
 const Grid: React.FC = () => {
-  const [data, setData] = useState([] as vals[]);
-  const [data1, setData1] = useState([] as vals[]);
+  const [data, setData] = useState([] as vals[] | any);
+  const [data1, setData1] = useState([] as vals[] | any);
 
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     getData();
   }, []);
   const getData = async () => {
-    const bookmarks = await axios.get(`http://localhost:5000/bookmarks`);
+    // const bookmarks = await axios.get(`http://localhost:5000/bookmarks`);
+    const bookmarks = await db;
     console.log(bookmarks);
 
-    setData(bookmarks.data);
-    setData1(bookmarks.data);
+    setData(bookmarks.bookmarks);
+    setData1(bookmarks.bookmarks);
     setLoading(false);
   };
   return (

@@ -22,6 +22,7 @@ interface State {
 const Tags: React.FC<GridProps> = (props) => {
   // checkhandle state works for handling checkboxes
   const [firstcheck, setFirstcheck] = useState<any>([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [checkhandle, setCheckhandle] = useState<State>({
     html: false,
     css: false,
@@ -37,22 +38,21 @@ const Tags: React.FC<GridProps> = (props) => {
     const container = [...props.data1];
     //tags Works for add data on check
     const Tags = (n: any) => {
-      return n.tags == `${e.target.name}`;
+      return n.tags === `${e.target.name}`;
     };
 
     //tagdel working for delete data on uncheck after check
     const TagDel = (n: any) => {
-      return n.tags != `${e.target.name}`;
+      return n.tags !== `${e.target.name}`;
     };
 
     if (data.length >= 0) {
       const TagFilter = container.filter(Tags);
-
-      //first render par array length 0 h toh jo value first add hui h use set kr dega......
-      if (firstcheck.length == 0) {
+      // To add the first value that is added since, On First render, Array length is 0,
+      if (firstcheck.length === 0) {
         setFirstcheck(TagFilter);
       }
-      //agr value more than 0 and check true then add more
+      // Check if value is more than 0, and check true then add more
       if (firstcheck.length > 0 && e.target.checked === true) {
         setFirstcheck([...firstcheck, ...TagFilter]);
       }
@@ -83,7 +83,7 @@ const Tags: React.FC<GridProps> = (props) => {
     } else {
       props.setData(props.data1);
     }
-  }, [firstcheck]);
+  }, [firstcheck, props]);
   return (
     <div className="tags_box col-md-12">
       <h1 className="tag__filters">Filters Tags</h1>

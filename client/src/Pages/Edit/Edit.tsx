@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Edit.css";
-import { withRouter, useHistory, useLocation } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 import { TextField, Button } from "@material-ui/core";
 
 export interface editvals {
@@ -26,7 +26,7 @@ const defaultvalues: editvals = {
 
 const Edit: React.FC = (props: any) => {
   const [values, setValues] = useState<editvals>(defaultvalues);
-  const location = useLocation();
+  // const location = useLocation();
   const { data } = props.location.state;
   const history = useHistory();
   useEffect(() => {
@@ -57,50 +57,51 @@ const Edit: React.FC = (props: any) => {
 
   return (
     <div className="create_form">
-        <TextField
-          size='small'
-          id=""
-          name="name"
-          value={values.name}
-          label="Name"
-          type="text"
-          className=""
-          variant="filled"
-          onChange={handleChange}
-        />
-        <TextField
-          size='small'
-          id=""
-          name="type"
-          value={values.type}
-          label="Type"
-          type="text"
-          className=""
-          variant="filled"
-          onChange={handleChange}
-        />
-        <TextField
-          size='small'
-          id=""
-          name="url"
-          value={values.url}
-          label="URL"
-          type="text"
-          className=""
-          variant="filled"
-          onChange={handleChange}
-        />
-        <TextField
-          size='small'
-          id=""
-          name="tags"
-          value={values.tags}
-          label="Tag"
-          type="text"
-          className=""
-          variant="filled"
-          onChange={handleChange}
-        /><br/>
+      <TextField
+        size="small"
+        id=""
+        name="name"
+        value={values.name}
+        label="Name"
+        type="text"
+        className=""
+        variant="filled"
+        onChange={handleChange}
+      />
+      <TextField
+        size="small"
+        id=""
+        name="type"
+        value={values.type}
+        label="Type"
+        type="text"
+        className=""
+        variant="filled"
+        onChange={handleChange}
+      />
+      <TextField
+        size="small"
+        id=""
+        name="url"
+        value={values.url}
+        label="URL"
+        type="text"
+        className=""
+        variant="filled"
+        onChange={handleChange}
+      />
+      <TextField
+        size="small"
+        id=""
+        name="tags"
+        value={values.tags}
+        label="Tag"
+        type="text"
+        className=""
+        variant="filled"
+        onChange={handleChange}
+      />
+      <br />
       <Button
         variant="contained"
         color="primary"

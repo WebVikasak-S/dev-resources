@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Results.css";
 import EditIcon from "@material-ui/icons/Edit";
 import SearchIcon from "@material-ui/icons/Search";
@@ -34,6 +34,9 @@ const Results: React.FC<GridProps> = (props) => {
 
   //     })
   // }
+  useEffect(() => {
+    console.log(props);
+  }, []);
   const handle = () => {
     return <h1>loading...</h1>;
   };
@@ -50,7 +53,7 @@ const Results: React.FC<GridProps> = (props) => {
           className="searchBar_input"
           onChange={(event) => {
             setLists(event.target.value);
-        }}
+          }}
         />
       </div>
       <div className="results_box col-md-12">
@@ -66,31 +69,35 @@ const Results: React.FC<GridProps> = (props) => {
               <h1>No Records Found...</h1>
             )
           ) : null}
-          {data.filter((item: vals) => {
-            if (lists === "") {
-              return item;
-            } else if (item.name.toLowerCase().includes(lists.toLowerCase())) {
-              return item;
-            }
-          }).map((bookmark: any, index: number) => (
-            <div className="result" key={index}>
-            <h5>
-              <a href={bookmark.url}>{bookmark.name}</a>
-              <span> #{bookmark.tags}</span>
-            </h5>
-            <br />
-            <Link
-              to={{
-                pathname: "/edit",
-                state: {
-                  data: bookmark.id,
-                },
-              }}
-            >
-              <EditIcon />
-            </Link>
-          </div>
-          ))}
+          {data
+            .filter((item: vals) => {
+              if (lists === "") {
+                return item;
+              } else if (
+                item.name.toLowerCase().includes(lists.toLowerCase())
+              ) {
+                return item;
+              }
+            })
+            .map((bookmark: any, index: number) => (
+              <div className="result" key={index}>
+                <h5>
+                  <a href={bookmark.url}>{bookmark.name}</a>
+                  <span> #{bookmark.tags}</span>
+                </h5>
+                <br />
+                <Link
+                  to={{
+                    pathname: "/edit",
+                    state: {
+                      data: bookmark.id,
+                    },
+                  }}
+                >
+                  <EditIcon />
+                </Link>
+              </div>
+            ))}
         </div>
       </div>
     </>
