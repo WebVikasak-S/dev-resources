@@ -1,0 +1,36 @@
+.results_box {
+  padding: 10px;
+}
+.result__header {
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: 22px;
+}
+/* .filterd_results{
+  display: flex;
+  flex-direction: column;
+} */
+.result{
+  display: flex;
+  justify-content: space-between;
+}
+.result h5 {
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+
+.searchBar {
+  border: 1px solid black;
+  border-radius: 50px;
+  padding-left: 10px;
+}
+.searchBar_input {
+  width: 97%;
+  padding: 0.7rem;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+}

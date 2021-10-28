@@ -1,0 +1,30 @@
+.tags_box {
+  padding: 10px;
+}
+.tag__filters {
+  margin: 0;
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+.tags{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.tag_button {
+  width: fit-content;
+  margin: 0.5rem 0.3rem;
+  padding: 0.5rem;
+}
+.tag_button button {
+  border: 1px solid darkblue;
+  border-radius: 6px;
+  background-color: white;
+  font-weight: 600;
+}
+.tag_button input{
+  margin-top: 0.4rem;
+}
+.tag_button label{
+  margin-left: 0.5rem;
+}
