@@ -97,7 +97,7 @@ const Results: React.FC<GridProps> = (props) => {
                 <EditIcon
                   onClick={() => {
                     alert(
-                      "Edit has been disabled since the Database is under work."
+                      "Edit $ Create has been disabled since the Database is under work."
                     );
                   }}
                 />
