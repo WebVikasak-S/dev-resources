@@ -4829,7 +4829,6 @@ const bookmarks = [
     type: "url",
     url: "https://dev.azure.com/MWPTraining/MWP%20Training/_backlogs/backlog/React%20Interns/Epics",
     tags: [],
-    "date-added": "12/12/12",
   },
   {
     date_added: "",
