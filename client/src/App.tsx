@@ -15,7 +15,9 @@ const App: React.FC = () => {
         {/* <Link to={'/create'}> */}
         <p
           onClick={() => {
-            alert("Edit & Create has been disabled since the Database is under work.");
+            alert(
+              "Edit & Create has been disabled since the Database is under work."
+            );
           }}
         >
           Create
