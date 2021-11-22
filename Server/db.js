@@ -1,4 +1,4 @@
-export const bookmarks = [
+const bookmarks = [
   {
     date_added: "13261236759459082",
     guid: "f5267079-4dab-412b-b88c-b7683fdb26ed",
@@ -4841,3 +4841,5 @@ export const bookmarks = [
     tags: [],
   },
 ];
+
+module.exports = { bookmarks };
