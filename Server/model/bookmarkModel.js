@@ -6,7 +6,10 @@ const bookmarkSchema = new mongoose.Schema({
   id: String,
   name: String,
   type: String,
-  url: String,
+  url: {
+    type: String,
+    required: true,
+  },
   tags: Array,
 });
 
