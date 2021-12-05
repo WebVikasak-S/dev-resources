@@ -42,7 +42,6 @@ function AddManyBookmarks(data) {
   });
 }
 
-
 // Get All the Bookmarks From DB
 async function getBookmarks() {
   const data = await Bookmarks.find();
@@ -69,7 +68,17 @@ async function createBookmark(data) {
   }
 }
 
-async function updateBookmarkById(id) {}
+async function getBookmarkById(id) {
+  if (id) {
+    const temp = await Bookmarks.findById(id);
+    console.log("Document By ID - ", temp);
+    return temp;
+  } else {
+    return "Error";
+  }
+}
+
+async function updateBookmarkById(data) {}
 
 // routes setting
 
@@ -104,7 +113,9 @@ app.post("/createBookmark", async (req, res) => {
 // Get Bookmark By ID
 app.get("/getBookmarkByID", async (req, res) => {
   try {
-
+    console.log("Requested ID - ", req.body.id);
+    const bookmarkById = await getBookmarkById(req.body.id);
+    console.log("Requested Doc - ", bookmarkById);
   } catch (err) {
     console.log(err);
     res.sendStatus(404).send(err);
