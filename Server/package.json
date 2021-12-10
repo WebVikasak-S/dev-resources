@@ -1,12 +1,12 @@
 {
   "name": "dev-resources",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "author": "Barbarians",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {

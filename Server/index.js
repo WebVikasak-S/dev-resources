@@ -78,7 +78,30 @@ async function getBookmarkById(id) {
   }
 }
 
-async function updateBookmarkById(data) {}
+async function updateBookmarkById(data) {
+  if (data) {
+    console.log("Query ID - ", data._id);
+    const temp = await Bookmarks.findByIdAndUpdate(
+      data._id,
+      {
+        name: data.name,
+        url: data.url,
+        tags: data.tags,
+      },
+      function (err, docs) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Updated Doc : ", docs);
+        }
+      }
+    );
+    console.log("Return - ", temp);
+    return temp;
+  } else {
+    return "Error in Query";
+  }
+}
 
 // routes setting
 
@@ -116,6 +139,7 @@ app.get("/getBookmarkByID", async (req, res) => {
     console.log("Requested ID - ", req.body.id);
     const bookmarkById = await getBookmarkById(req.body.id);
     console.log("Requested Doc - ", bookmarkById);
+    res.status(200).send(bookmarkById);
   } catch (err) {
     console.log(err);
     res.sendStatus(404).send(err);
@@ -126,9 +150,10 @@ app.get("/getBookmarkByID", async (req, res) => {
 app.post("/updateBookmarkById", async (req, res) => {
   try {
     if (req.body) {
-      console.log("ID? - ", req.body.id);
-      const newBookmark = await updateBookmarkById(req.body.id);
-      res.status(200).send(`Updated bookmark -> Id - ${req.body} - `);
+      console.log("Before - ", req.body);
+      const newBookmark = await updateBookmarkById(req.body);
+      console.log("After - ", newBookmark);
+      res.status(200).send("Bookmark Updates Successfully");
     } else {
       res.status(404).send("No Parameter..!");
     }
