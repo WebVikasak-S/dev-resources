@@ -220,7 +220,7 @@ app.post("/importBookmarks", (req, res) => {
       if (req.fileValidationError) {
         return res.send(req.fileValidationError);
       } else if (!req.file) {
-        return res.send("Please select an image to upload");
+        return res.send("Please select an HTML file to upload");
       } else if (err instanceof multer.MulterError) {
         return res.send(err);
       } else if (err) {
