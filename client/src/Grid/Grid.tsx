@@ -46,7 +46,6 @@ const Grid: React.FC = () => {
       <Tags data={data} setData={setData} data1={data1} setData1={setData1} />
       <hr />
       <Results data={data} loading={loading} />
-      {console.log(typeof setData)}
     </div>
   );
 };
