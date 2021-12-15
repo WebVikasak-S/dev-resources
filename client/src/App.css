@@ -7,14 +7,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.App-header p{
+.App-header p {
   float: right;
 }
 .main_window {
   padding: 1rem 2rem;
-  margin: 0 8rem;
+  margin: 0 5rem;
 }
-.App-header h1{
+.App-header h1 {
   text-decoration: none;
   color: white;
 }

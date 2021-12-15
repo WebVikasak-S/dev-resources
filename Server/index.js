@@ -4,7 +4,9 @@ const dotenv = require("dotenv");
 const cheerio = require("cheerio");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
+const multer = require("multer");
 const path = require("path");
+const helpers = require("./utils/helper");
 const { bookmarks } = require("./db");
 const mongoose = require("mongoose");
 const Bookmarks = require("./model/bookmarkModel");
@@ -54,6 +56,7 @@ async function getBookmarks() {
   return data;
 }
 
+// Create a Bookmark
 async function createBookmark(data) {
   if (data) {
     const temp = new Bookmarks(data);
@@ -68,6 +71,7 @@ async function createBookmark(data) {
   }
 }
 
+// Get Bookmark By ID
 async function getBookmarkById(id) {
   if (id) {
     const temp = await Bookmarks.findById(id);
@@ -78,6 +82,7 @@ async function getBookmarkById(id) {
   }
 }
 
+// Update a Bookmark
 async function updateBookmarkById(data) {
   if (data) {
     console.log("Query ID - ", data._id);
@@ -166,29 +171,68 @@ app.post("/updateBookmarkById", async (req, res) => {
 // Route And Logic to Get and Parse an
 // HTML file to extract the bookmarks from it
 
-const filePath = path.join(__dirname, "./assets/uploads/demoBookmarks1.html");
-const $ = cheerio.load(fs.readFileSync(filePath));
-let newBookmarks = [];
+// Storage Defination for Multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "assets/uploads/");
+  },
+
+  // By default, multer removes file extensions so let's add them back
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+// Cheerio function to Parse File and extract Data from it into an array
+function parseHTML(uploadedFilePath) {
+  const filePath = path.join(__dirname, uploadedFilePath);
+  const $ = cheerio.load(fs.readFileSync(filePath));
+  let newBookmarks = [];
+  let aTags = $("a");
+  $(aTags).each((i, tag) => {
+    let object = {
+      date_added: "",
+      guid: uuidv4(),
+      id: "",
+      name: $(tag).text(),
+      type: "",
+      url: $(tag).attr("href"),
+      tags: [],
+    };
+    newBookmarks.push(object);
+  });
+  return newBookmarks;
+}
 
 app.post("/importBookmarks", (req, res) => {
-  //   let aTags = $("a");
-  //   $(aTags).each((i, tag) => {
-  //     let object = {
-  //       date_added: "",
-  //       guid: uuidv4(),
-  //       id: "",
-  //       name: $(tag).text(),
-  //       type: "",
-  //       url: $(tag).attr("href"),
-  //       tags: [],
-  //     };
-  //     newBookmarks.push(object);
-  //   });
   try {
-    req.on("data", (data) => {
-      console.log(data);
+    let upload = multer({
+      storage: storage,
+      fileFilter: helpers.htmlFilter,
+    }).single("bookmarks");
+    upload(req, res, function (err) {
+      // req.file contains information of uploaded file
+      // req.body contains information of text fields, if there were any
+
+      if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+      } else if (!req.file) {
+        return res.send("Please select an HTML file to upload");
+      } else if (err instanceof multer.MulterError) {
+        return res.send(err);
+      } else if (err) {
+        return res.send(err);
+      }
+
+      // Display uploaded image for user validation
+      let response = parseHTML(req.file.path);
+      res
+        .status(200)
+        .send({ message: "File Uploaded and Parsed", data: response });
     });
-    res.status(200).send(req.file);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);

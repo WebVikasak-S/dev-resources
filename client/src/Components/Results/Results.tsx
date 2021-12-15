@@ -35,7 +35,7 @@ const Results: React.FC<GridProps> = (props) => {
   //     })
   // }
   useEffect(() => {
-    console.log(props);
+    console.log("Received Props is results component - ", props);
   }, []);
   const handle = () => {
     return <h1>loading...</h1>;

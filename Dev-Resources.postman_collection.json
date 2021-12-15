@@ -108,7 +108,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"619f624e098d2d228466c128\";\r\n}",
+					"raw": "{\r\n        \"_id\": \"619f624e098d2d228466c123\",\r\n        \"date_added\": \"13254531524453368\",\r\n        \"guid\": \"ab796793-5a41-41df-b1fa-48ab9a4662d0\",\r\n        \"id\": \"218\",\r\n        \"name\": \"React Interns Epics Backlog - Boards\",\r\n        \"type\": \"url\",\r\n        \"url\": \"https://dev.azure.com/MWPTraining/MWP%20Training/_backlogs/backlog/React%20Interns/Epics/\",\r\n        \"tags\": [\r\n            \"celebal\", \"react\"\r\n        ],\r\n        \"__v\": 0\r\n    }",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -124,6 +124,66 @@
 					"port": "5000",
 					"path": [
 						"updateBookmarkById"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/getBookmarkByID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"619f624e098d2d228466c123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/getBookmarkByID",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"getBookmarkByID"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/importBookmarks",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "bookmarks",
+							"type": "file",
+							"src": "/E:/Documents/demoBookmarks1.html"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/importBookmarks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"importBookmarks"
 					]
 				}
 			},
