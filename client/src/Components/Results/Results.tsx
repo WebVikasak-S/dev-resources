@@ -35,7 +35,7 @@ const Results: React.FC<GridProps> = (props) => {
   //     })
   // }
   useEffect(() => {
-    console.log(props);
+    console.log("Received Props is results component - ", props);
   }, []);
   const handle = () => {
     return <h1>loading...</h1>;
@@ -70,23 +70,24 @@ const Results: React.FC<GridProps> = (props) => {
             )
           ) : null}
           {data
-            .filter((item: vals) => {
-              if (lists === "") {
-                return item;
-              } else if (
-                item.name.toLowerCase().includes(lists.toLowerCase())
-              ) {
-                return item;
-              }
-            })
-            .map((bookmark: any, index: number) => (
-              <div className="result" key={index}>
-                <h5>
-                  <a href={bookmark.url}>{bookmark.name}</a>
-                  <span> #{bookmark.tags}</span>
-                </h5>
-                <br />
-                {/* <Link
+            ? data
+                .filter((item: vals) => {
+                  if (lists === "") {
+                    return item;
+                  } else if (
+                    item.name.toLowerCase().includes(lists.toLowerCase())
+                  ) {
+                    return item;
+                  }
+                })
+                .map((bookmark: any, index: number) => (
+                  <div className="result" key={index}>
+                    <h5>
+                      <a href={bookmark.url}>{bookmark.name}</a>
+                      <span> #{bookmark.tags}</span>
+                    </h5>
+                    <br />
+                    {/* <Link
                   to={{
                     pathname: "/edit",
                     state: {
@@ -94,16 +95,17 @@ const Results: React.FC<GridProps> = (props) => {
                     },
                   }}
                 > */}
-                <EditIcon
-                  onClick={() => {
-                    alert(
-                      "Edit $ Create has been disabled since the Database is under work."
-                    );
-                  }}
-                />
-                {/* </Link> */}
-              </div>
-            ))}
+                    <EditIcon
+                      onClick={() => {
+                        alert(
+                          "Edit $ Create has been disabled since the Database is under work."
+                        );
+                      }}
+                    />
+                    {/* </Link> */}
+                  </div>
+                ))
+            : "No Records"}
         </div>
       </div>
     </>
