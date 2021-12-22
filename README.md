@@ -5,7 +5,9 @@
 
 
 ## For running Frontend part got to client directory an run the command 
-### `npm start`
+### `yarn`
+### `yarn start`
 
-## For running JSON Server part got to server directory an run the command 
-### `json-server --watch db.json`
+## For running Backend part got to server directory an run the command 
+### `yarn`
+### `yarn dev` - for development server with nodemon.
