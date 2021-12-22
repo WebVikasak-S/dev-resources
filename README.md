@@ -4,10 +4,15 @@
 ### The Backend is currently in Development and will be added soon as i get time.
 
 
-## For running Frontend part got to client directory an run the command 
-### `yarn`
-### `yarn start`
-
-## For running Backend part got to server directory an run the command 
-### `yarn`
-### `yarn dev` - for development server with nodemon.
+## Fornt-End
+### From the client directory, install the dependencies using yarn and then run the development server
+```sh
+yarn
+yarn start
+```
+## Back-End
+### From the server directory, install the dependencies anf run the devvelopment server
+```sh
+yarn
+yarn dev
+```
