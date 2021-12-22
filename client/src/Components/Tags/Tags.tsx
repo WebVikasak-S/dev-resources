@@ -85,14 +85,15 @@ const Tags: React.FC<GridProps> = (props) => {
     }
   }, [firstcheck, props]);
   return (
-    <div className="tags_box col-md-12">
-      <h1 className="tag__filters">Filters Tags</h1>
-      <div className="tags">
-        <div className="tag_button">
-          <button onClick={handleAllData}>Apply All</button>
+    <div className="p-4 col-md-12">
+      <h1 className=" m-0 pb-6 font-semibold">Filters Tags</h1>
+      <div className="flex flex-row flex-wrap">
+        <div className="w-fit p-2 m-2">
+          <button className="p-1 border-2 border-black rounded font-semibold" onClick={handleAllData}>Apply All</button>
         </div>
-        <div className="tag_button">
+        <div className="w-fit p-2 m-2">
           <input
+            className="mt-2"
             type="checkbox"
             value="html"
             name="html"
@@ -101,8 +102,9 @@ const Tags: React.FC<GridProps> = (props) => {
           />
           <label>#Html</label>
         </div>
-        <div className="tag_button">
+        <div className="w-fit p-2 m-2">
           <input
+            className="mt-2"
             type="checkbox"
             value="1"
             id="1"
@@ -110,64 +112,69 @@ const Tags: React.FC<GridProps> = (props) => {
             onChange={handleFilter}
             checked={checkhandle.css}
           />
-          <label>#CSS</label>
+          <label >#CSS</label>
         </div>
-        <div className="tag_button">
+        <div className="w-fit p-2 m-2">
           <input
+            className="mt-2"
             type="checkbox"
             value="html"
             name="javascript"
             onChange={handleFilter}
             checked={checkhandle.javascript}
           />
-          <label>#Javascript</label>
+          <label >#Javascript</label>
         </div>
-        <div className="tag_button">
+        <div className="w-fit p-2 m-2">
           <input
+            className="mt-2"
             type="checkbox"
             value="html"
             name="reactjs"
             onChange={handleFilter}
             checked={checkhandle.reactjs}
           />
-          <label>#ReactJS</label>
+          <label >#ReactJS</label>
         </div>
-        <div className="tag_button">
+        <div className="w-fit p-2 m-2">
           <input
+            className="mt-2"
             type="checkbox"
             value="html"
             name="github"
             onChange={handleFilter}
             checked={checkhandle.github}
           />
-          <label>#Github</label>
+          <label >#Github</label>
         </div>
-        <div className="tag_button">
+        <div className="w-fit p-2 m-2">
           <input
+            className="mt-2"
             type="checkbox"
             value="html"
             name="typescript"
             checked={checkhandle.typescript}
             onChange={handleFilter}
           />
-          <label>#Typescript</label>
+          <label >#Typescript</label>
         </div>
-        <div className="tag_button">
+        <div className="w-fit p-2 m-2">
           <input
+            className="mt-2"
             type="checkbox"
             value="1"
             name="celebal"
             checked={checkhandle.celebal}
             onChange={handleFilter}
           />
-          <label>#Celebal</label>
+          <label >#Celebal</label>
         </div>
-        {/* <button className="tag_button">HTML</button>
-        <button className="tag_button">CSS</button>
-        <button className="tag_button">JavaScript</button>
-        <button className="tag_button">ReactJS</button>
-        <button className="tag_button">Github</button>
-        <button className="tag_button">Typescript</button> */}
+        {/* <button className="w-fit p-2 m-2">HTML</button>
+        <button className="w-fit p-2 m-2">CSS</button>
+        <button className="w-fit p-2 m-2">JavaScript</button>
+        <button className="w-fit p-2 m-2">ReactJS</button>
+        <button className="w-fit p-2 m-2">Github</button>
+        <button className="w-fit p-2 m-2">Typescript</button> */}
       </div>
     </div>
   );

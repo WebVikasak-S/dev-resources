@@ -9,12 +9,14 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/classnames": "^2.3.1",
     "@types/jest": "^26.0.24",
     "@types/node": "^12.20.19",
     "@types/react": "^17.0.16",
     "@types/react-dom": "^17.0.9",
     "axios": "^0.21.4",
     "bootstrap": "^5.1.0",
+    "classnames": "^2.3.1",
     "json-server": "^0.16.3",
     "localtunnel": "^2.0.2",
     "react": "^17.0.2",
@@ -26,7 +28,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "build:tailwind": "tailwindcss build src/index.css -o src/tailwind.output.css",
+    "prestart": "npm run build:tailwind",
+    "prebuild": "npm run build:tailwind",
+    "start": "react-scripts start ",
     "build": "CI= react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -53,6 +58,6 @@
     "@types/react-router-dom": "^5.1.8",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.5",
-    "tailwindcss": "^3.0.6"
+    "tailwindcss": "^3.0.5"
   }
 }
