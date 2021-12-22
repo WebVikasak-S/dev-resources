@@ -1,4 +1,4 @@
-## Dev-Resources
+# Dev-Resources
 ### A Portal to manage my bookmarks as Development resources so that I can share them with my team and with my friends.
 
 ### The Backend is currently in Development and will be added soon as i get time.
