@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Grid.css";
 import Results from "../Components/Results/Results";
 import Tags from "../Components/Tags/Tags";
-import axios from "axios";
-import { db } from "../db.js";
+// import axios from "axios";
+// import { db } from "../db.js";
 import { getAllBookmarks } from "../api";
 export interface vals {
   date_added: string;
@@ -42,7 +42,7 @@ const Grid: React.FC = () => {
   //   setLoading(false);
   // };
   return (
-    <div className="view_port">
+    <div className="mt-10">
       <Tags data={data} setData={setData} data1={data1} setData1={setData1} />
       <hr />
       <Results data={data} loading={loading} />
