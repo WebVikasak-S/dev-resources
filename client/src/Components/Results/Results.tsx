@@ -83,7 +83,9 @@ const Results: React.FC<GridProps> = (props) => {
                 .map((bookmark: any, index: number) => (
                   <div className="result" key={index}>
                     <h5>
-                      <a href={bookmark.url}>{bookmark.name}</a>
+                      <a href={bookmark.url} target="_blank" rel="noreferrer">
+                        {bookmark.name}
+                      </a>
                       <span> #{bookmark.tags}</span>
                     </h5>
                     <br />
