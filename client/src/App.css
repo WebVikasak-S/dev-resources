@@ -20,10 +20,10 @@
 }
 
 
-@media only screen and (max-width: 768px){
-  /*Big smartphones [426px -> 768px]*/
+/* @media only screen and (max-width: 768px){
+  Big smartphones [426px -> 768px]
   .main_window {
     padding: 1rem 2rem;
     margin: 0 1rem;
   }
-}
+} */

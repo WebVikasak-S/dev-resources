@@ -7,13 +7,13 @@ import Edit from "./Pages/Edit/Edit";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="">
+      <header className="bg-slate-800 flex items-center justify-around text-white py-2">
         <Link to={"/"}>
-          <h1>Dev Resources</h1>
+          <h1 className="no-underline text-4xl">Dev Resources</h1>
         </Link>
         {/* <Link to={'/create'}> */}
-        <p
+        <p className="float-right font-xs"
           onClick={() => {
             alert(
               "Edit & Create has been disabled since the Database is under work."
@@ -24,7 +24,7 @@ const App: React.FC = () => {
         </p>
         {/* </Link> */}
       </header>
-      <div className="main_window">
+      <div className="px-8 py-4 mx-6">
         <Switch>
           <Route path={"/"} exact component={Grid} />
           <Route path={"/edit/:id"} exact component={Edit} />
