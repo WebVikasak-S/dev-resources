@@ -9,10 +9,11 @@ import '~/styles/styles.css';
 import Footer from '../Footer';
 
 function Index() {
-  const { state } = useAuthState();
+  // const { state } = useAuthState();
 
   return (
     <>
+      {/* <h1>Helllo From Index Screen</h1> */}
       <Head title="Home | Dev-Resources" />
       <Navbar />
       <div className="flex py-2 mb-auto">

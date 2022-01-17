@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { useQuery } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
 
 interface IBookmark {
   // eslint-disable-next-line camelcase

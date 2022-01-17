@@ -1,6 +1,5 @@
 import * as React from 'react';
 import BookmarkCard from './BookmarkCard';
-import db from '../utils/db.js';
 import { useQuery } from 'react-query';
 import Loading from './Loading';
 
@@ -51,22 +50,25 @@ const Results = () => {
       {console.log(searchTerm)}
       {isLoading ? (
         <Loading />
-      ) : (
-        bookmarks &&
+      ) : bookmarks ? (
         bookmarks
           .slice(1, 11)
           .filter((bookmark: IBookmark, i: number) => {
             if (!searchTerm || searchTerm === '') return bookmark;
-            if (
+            else if (
               bookmark.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
               bookmark.url.toLowerCase().includes(searchTerm.toLowerCase())
             ) {
               return bookmark;
+            } else {
+              return null;
             }
           })
           .map((bookmark: IBookmark, i: number) => {
             return <BookmarkCard key={i} propData={bookmark} />;
           })
+      ) : (
+        <Loading />
       )}
       {/* <BookmarkCard propData={dummydata} /> */}
     </div>

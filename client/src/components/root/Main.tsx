@@ -22,6 +22,7 @@ function Main() {
   // }, []);
   return (
     <main className="flex flex-1 flex-col min-h-[100vh] h-full p-[5px]">
+      {/* <h1>Hello Server</h1> */}
       <Router />
     </main>
   );

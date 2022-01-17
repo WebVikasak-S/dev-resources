@@ -1,9 +1,9 @@
 {
-  "name": "vite-react-ts-tailwind-starter",
+  "name": "dev-resources",
   "version": "1.0.0",
   "license": "MIT",
   "author": {
-    "name": "TeXmeijin"
+    "name": "WebVikasaks"
   },
   "scripts": {
     "dev": "vite",
