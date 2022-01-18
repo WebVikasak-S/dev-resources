@@ -27,29 +27,30 @@ const BookmarkCard = ({ propData }: IBookmarkCard) => {
 
   return (
     <div className="flex flex-col md:flex-row justify-around items-center p-4 mt-4 mx-auto border rounded-md">
-      <img className=" mb-2 md:mb-0  border w-[150px] h-auto" src={demo} alt="domain logo" />
+      <img className=" mb-2 md:mb-0  border w-auto h-[150px] md:w-[150px] md:h-auto" src={demo} alt="domain logo" />
       <div className="flex flex-1 flex-col items-start mx-4">
         <p>
           <strong>Title - </strong>
           {propData.name}
         </p>
         <p>
-          <strong>Description -</strong>
-          {`Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem commodi harum ad aliquid reiciendis possimus.`}
+          <strong className="inline">Description - </strong>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatem commodi harum ad aliquid reiciendis
+          possimus.
         </p>
         <Link to={propData.url || '#'}>
           <p>
             <strong>
-              <HiOutlineLink className="inline mr-2" />
-            </strong>
-            {`www.google.com`}
+              <HiOutlineLink className="inline" />
+            </strong>{' '}
+            - {`${propData.url.slice(0, 25)  }...`}
           </p>
         </Link>
         <p>
           <strong>
             <TiTags className="inline" />
           </strong>{' '}
-          {'->'}{' '}
+          {'-'}{' '}
           {propData.tags.map((tag, i) => (
             <span key={i}>{tag},</span>
           ))}
