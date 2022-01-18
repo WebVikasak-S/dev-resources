@@ -18,7 +18,7 @@ const Footer = () => {
         <SiTailwindcss className="inline mx-1" />
       </h3>
       <p className="flex justify-center my-1">
-        All Rights Reserved <strong className="mx-1 text-2xl">&copy;</strong> <a src="#">WebVikasaks</a>
+        All Rights Reserved <strong className="mx-1 text-2xl">&copy;</strong> <a>WebVikasaks</a>
       </p>
     </footer>
   );

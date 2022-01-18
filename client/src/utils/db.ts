@@ -4809,14 +4809,13 @@ export const bookmarksDummy: IBookmark[] = [
     tags: [],
   },
   {
-    date_added: '',
+    date_added: '12/12/12',
     guid: '',
     id: 'AjDIjwk',
     name: 'Backlog Azure',
     type: 'url',
     url: 'https://dev.azure.com/MWPTraining/MWP%20Training/_backlogs/backlog/React%20Interns/Epics',
     tags: [],
-    'date-added': '12/12/12',
   },
   {
     date_added: '',

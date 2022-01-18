@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TagContext } from './TagContext';
-import { themeChange } from 'theme-change';
+// import { themeChange } from 'theme-change';
 
 interface IThemeContext {
   theme: string;
@@ -23,9 +23,9 @@ export const ThemeProvider = ({ children }: IThemeProvider) => {
   React.useEffect(() => {
     const data = document.getElementById('theme-switch');
     console.log(checkTheme());
-    themeChange(true);
+    // themeChange(true);
     // 👆 false parameter is required for react project
-    setTheme(checkTheme());
+    // setTheme(checkTheme());
     if (theme === 'wireframe') {
       data?.setAttribute('data-theme', 'wireframe');
       setIsDark(false);

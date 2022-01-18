@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { themeChange } from 'theme-change';
+// import { themeChange } from 'theme-change';
 import { CgMenu, CgClose } from 'react-icons/cg';
 import { ThemeContext } from './contexts/ThemeContext';
 
