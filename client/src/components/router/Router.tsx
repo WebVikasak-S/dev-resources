@@ -9,6 +9,7 @@ const LoadingPage = () => (
 );
 
 const IndexScreen = lazy(() => import('~/components/screens/Index'));
+const CreateScreen = lazy(() => import('~/components/screens/Create'));
 const Page404Screen = lazy(() => import('~/components/screens/404'));
 
 export const Router = () => {
@@ -17,8 +18,10 @@ export const Router = () => {
       <Suspense fallback={<LoadingPage />}>
         <Switch>
           <Route exact path="/">
-            {/* <h1>Hello From Router</h1> */}
             <IndexScreen />
+          </Route>
+          <Route path="/create">
+            <CreateScreen />
           </Route>
           <Route path="*">
             <Page404Screen />
