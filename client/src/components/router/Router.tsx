@@ -9,7 +9,10 @@ const LoadingPage = () => (
 );
 
 const IndexScreen = lazy(() => import('~/components/screens/Index'));
+const AboutScreen = lazy(() => import('~/components/screens/About'));
 const CreateScreen = lazy(() => import('~/components/screens/Create'));
+const ImportScreen = lazy(() => import('~/components/screens/Import'));
+const LogInSignUpScreen = lazy(() => import('~/components/screens/LogInSignUp'));
 const Page404Screen = lazy(() => import('~/components/screens/404'));
 
 export const Router = () => {
@@ -20,8 +23,17 @@ export const Router = () => {
           <Route exact path="/">
             <IndexScreen />
           </Route>
+          <Route path="/about">
+            <AboutScreen />
+          </Route>
           <Route path="/create">
             <CreateScreen />
+          </Route>
+          <Route path="/import">
+            <ImportScreen />
+          </Route>
+          <Route path="/login-signup">
+            <LogInSignUpScreen />
           </Route>
           <Route path="*">
             <Page404Screen />

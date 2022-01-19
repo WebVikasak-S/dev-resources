@@ -4,16 +4,6 @@ import { useQuery } from 'react-query';
 import { BiSearchAlt } from 'react-icons/bi';
 import BookmarkCard from './BookmarkCard';
 import Loading from './Loading';
-
-const dummydata = {
-  date_added: '13261236759459082',
-  guid: 'f5267079-4dab-412b-b88c-b7683fdb26ed',
-  id: '217',
-  name: 'Zoho',
-  type: 'url',
-  url: 'https://people.zoho.in/hrmsportal13102016/zp#home/dashboard',
-  tags: ['celebal'],
-};
 interface IBookmark {
   // eslint-disable-next-line camelcase
   date_added: string;
