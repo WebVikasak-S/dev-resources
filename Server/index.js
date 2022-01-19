@@ -109,10 +109,21 @@ async function updateBookmarkById(data) {
   }
 }
 
+const base = `
+Hello Peeps...👋
+  Available Endpoints - 
+  1) - /getAllBookmarks
+  2) - /createBookmark
+  3) - /getBookmarkByID
+  4) - /updateBookmarkById
+  5) - /importBookmarks
+  6) - /getLinkPreview
+`;
+
 // routes setting
 
 app.get("/", async (req, res) => {
-  res.send("Hello Peep..🔥");
+  res.send(base);
 });
 
 // Get All Bookmarks From Database
