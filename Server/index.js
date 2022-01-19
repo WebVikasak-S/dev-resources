@@ -11,6 +11,7 @@ const { bookmarks } = require("./db");
 const mongoose = require("mongoose");
 const Bookmarks = require("./model/bookmarkModel");
 const cors = require("cors");
+const linkPreview = require("./utils/linkPreview");
 
 // Express App Initialization
 const app = express();
@@ -233,6 +234,18 @@ app.post("/importBookmarks", (req, res) => {
         .status(200)
         .send({ message: "File Uploaded and Parsed", data: response });
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+// Get Link preview DATA
+app.get("/getLinkPreview", async (req, res) => {
+  try {
+    const url = req.body.url;
+    const previewData = await linkPreview(url);
+    res.status(200).send(previewData);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);

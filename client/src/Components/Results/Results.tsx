@@ -41,7 +41,7 @@ const Results: React.FC<GridProps> = (props) => {
     return <h1>loading...</h1>;
   };
 
-  const [lists, setLists] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
     <>
@@ -52,7 +52,7 @@ const Results: React.FC<GridProps> = (props) => {
           placeholder="Search Here"
           className="searchBar_input"
           onChange={(event) => {
-            setLists(event.target.value);
+            setSearchTerm(event.target.value);
           }}
         />
       </div>
@@ -72,10 +72,14 @@ const Results: React.FC<GridProps> = (props) => {
           {data
             ? data
                 .filter((item: vals) => {
-                  if (lists === "") {
+                  console.log("item in data - ", item);
+                  if (searchTerm === "") {
                     return item;
                   } else if (
-                    item.name.toLowerCase().includes(lists.toLowerCase())
+                    item.name
+                      .toLowerCase()
+                      .includes(searchTerm.toLowerCase()) ||
+                    item.url.toLowerCase().includes(searchTerm.toLowerCase())
                   ) {
                     return item;
                   }
@@ -83,7 +87,9 @@ const Results: React.FC<GridProps> = (props) => {
                 .map((bookmark: any, index: number) => (
                   <div className="result" key={index}>
                     <h5>
-                      <a href={bookmark.url}>{bookmark.name}</a>
+                      <a href={bookmark.url} target="_blank" rel="noreferrer">
+                        {bookmark.name}
+                      </a>
                       <span> #{bookmark.tags}</span>
                     </h5>
                     <br />
