@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Barbarians",
   "license": "MIT",
+  "pkg": {
+    "assets": "node_modules/puppeteer-extra-plugin-stealth/**/*.*"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
