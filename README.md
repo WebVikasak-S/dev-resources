@@ -16,3 +16,6 @@ yarn start
 yarn
 yarn dev
 ```
+
+## Slack Community Link
+### https://join.slack.com/t/newworkspace-wae7583/shared_invite/zt-12absx641-z_Htlo9CInCpT7fFGI6~Pw
