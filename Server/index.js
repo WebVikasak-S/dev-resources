@@ -11,7 +11,7 @@ const { bookmarks } = require("./db");
 const mongoose = require("mongoose");
 const Bookmarks = require("./model/bookmarkModel");
 const cors = require("cors");
-const linkPreview = require("./utils/linkPreview");
+const LinkPreview = require("./utils/linkPreview");
 
 // Express App Initialization
 const app = express();
@@ -255,7 +255,7 @@ app.post("/importBookmarks", (req, res) => {
 app.get("/getLinkPreview", async (req, res) => {
   try {
     const url = req.body.url;
-    const previewData = await linkPreview(url);
+    const previewData = await LinkPreview(url);
     res.status(200).send(previewData);
   } catch (err) {
     console.log(err);

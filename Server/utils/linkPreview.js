@@ -1,4 +1,3 @@
-"use strict";
 const puppeteer = require("puppeteer-extra");
 const pluginStealth = require("puppeteer-extra-plugin-stealth");
 const util = require("util");
@@ -150,7 +149,7 @@ const getDomainName = async (page, uri) => {
     : new URL(uri).hostname.replace("www.", "");
 };
 
-module.exports = async (
+const LinkPreview = async (
   uri,
   puppeteerArgs = [],
   puppeteerAgent = "facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)"
@@ -176,3 +175,5 @@ module.exports = async (
   await browser.close();
   return obj;
 };
+
+module.exports = LinkPreview;
