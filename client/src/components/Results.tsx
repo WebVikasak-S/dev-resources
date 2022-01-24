@@ -1,4 +1,5 @@
 import * as React from 'react';
+// import Pagination from '../../src/components/pagination/pagination.jsx';
 import { bookmarksDummy } from '../utils/db.js';
 import { useQuery } from 'react-query';
 import { BiSearchAlt } from 'react-icons/bi';
@@ -15,7 +16,12 @@ interface IBookmark {
   tags: string[];
 }
 
+const pageSize = 50;
+
 const Results = () => {
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+
   const [searchTerm, setSearchTerm] = React.useState('');
   const [bookmarks, setBookmarks] = React.useState<IBookmark[]>([]);
   const { isLoading, error, data, isFetching } = useQuery(
@@ -29,6 +35,12 @@ const Results = () => {
   React.useEffect(() => {
     console.log(bookmarks);
   }, [bookmarks]);
+
+  const resourceData = React.useMemo(() => {
+    const firstPage = (currentPage - 1) * pageSize;
+    const lastPage = firstPage + pageSize;
+    return bookmarksDummy.slice(firstPage, lastPage)
+  }, [currentPage]);
 
   return (
     <div className="results flex flex-col flex-1 items-center justify-start border-2 mx-1 p-2 overflow-y-hidden overflow-x-hidden md:overflow-y-scroll h-[75vh]">
@@ -48,8 +60,7 @@ const Results = () => {
       {isLoading ? (
         <Loading />
       ) : bookmarks ? (
-        bookmarksDummy
-          .slice(1, 9)
+        resourceData
           .filter((bookmark: IBookmark) => {
             if (!searchTerm || searchTerm === '') return bookmark;
             else if (
@@ -68,6 +79,13 @@ const Results = () => {
         <Loading />
       )}
       {/* <BookmarkCard propData={dummydata} /> */}
+      {/* <Pagination
+        className="pagination-bar"
+        currentPage={currentPage}
+        totalCount={bookmarksDummy.length}
+        pageSize={pageSize}
+        // onPageChange={page => setCurrentPage(page)}
+      /> */}
     </div>
   );
 };
