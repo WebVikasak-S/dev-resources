@@ -32,3 +32,6 @@
   transform: rotate(-45deg);
   transform-origin: top left;
 }
+.nav-style{
+  width: 150px;
+}

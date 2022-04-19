@@ -14,7 +14,7 @@ interface ITagProvider {
   children: React.ReactNode;
 }
 
-const AllTags = ['Html', 'CSS', 'JavaScript', 'ReactJS', 'GitHub', 'TypeScript', 'Celebal'];
+const AllTags = ['Html', 'CSS', 'JavaScript', 'ReactJS', 'React Native', 'Tailwind', 'Tailwind CSS', 'GitHub', 'TypeScript', 'Celebal'];
 
 export const TagProvider = ({ children }: ITagProvider) => {
   const [filteredTags, setFilteredTags] = React.useState<string[]>([]);
