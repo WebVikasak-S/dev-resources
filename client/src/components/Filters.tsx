@@ -25,7 +25,7 @@ const Filters = () => {
   return (
     <div className="flex flex-col p-2 px-8 border-2 mx-1 h-fit sm:mb-2 items-center">
       <p className="text-xl font-semibold underline">Filter Tags</p>
-      <div className="flex flex-row md:flex-col flex-start flex-wrap">
+      <div className="grid gap-2 grid-cols-2">
         {allTags
           ? allTags.map((tag, i) => {
               return (

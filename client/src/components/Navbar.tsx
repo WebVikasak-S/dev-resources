@@ -41,19 +41,19 @@ const Navbar = () => {
       </button>
       {isOpen ? (
         <div className="absolute z-20 w-[95vw] h-[100vh] bg-transparent top-0 right-0" onClick={menuHandler}>
-          <div className="absolute z-30 menu top-[80px] right-1 bg-base-200 p-2 px-6 border-2 flex flex-col items-center">
+          <div className="absolute z-30 menu top-[80px] right-1 bg-base-200 p-2 px-6 border-2 flex flex-col items-center w-full mr-1.5">
             <input type="checkbox" className="toggle mb-2" onChange={themeChangeHandler} checked={isDark} />
             <Link to="/about">
-              <button className="btn btn-primary mb-2">About</button>
+              <button className="btn btn-primary w-50 mb-2 nav-style">About</button>
             </Link>
             <Link to="/create">
-              <button className="btn btn-primary mb-2">Create</button>
+              <button className="btn btn-primary w-50 mb-2 nav-style">Create</button>
             </Link>
             <Link to="/import">
-              <button className="btn btn-primary mb-2">Import</button>
+              <button className="btn btn-primary w-50 mb-2 nav-style">Import</button>
             </Link>
             <Link to="/login-signup">
-              <button className="btn btn-primary">Login/SignUp</button>
+              <button className="btn btn-primary w-50 nav-style">Login/SignUp</button>
             </Link>
           </div>
         </div>
