@@ -1,8 +1,8 @@
-import { Router } from '~/components/router/Router';
+import { Router } from '../../Components/router/Router';
 import { setupFirebase } from '~/lib/firebase';
 import { useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { useSignIn, useSignOut } from '~/components/contexts/UserContext';
+import { useSignIn, useSignOut } from '../../Components/contexts/UserContext';
 
 function Main() {
   const { signIn } = useSignIn();

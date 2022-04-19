@@ -1,10 +1,7 @@
-import { useAuthState } from '~/components/contexts/UserContext';
-import { SignInButton } from '~/components/domain/auth/SignInButton';
-import { SignOutButton } from '~/components/domain/auth/SignOutButton';
-import Filters from '../Filters';
-import Results from '../Results';
+import Filters from '../../Components/Filters';
+import Results from '../../Components/Results';
 import '~/styles/styles.css';
-import ScreenWrapper from '../hoc/ScreenWrapper';
+import ScreenWrapper from '../../Components/hoc/ScreenWrapper';
 
 function Index() {
   // const { state } = useAuthState();

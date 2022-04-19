@@ -32,7 +32,7 @@ const Tags = () => {
                 name={tag}
                 onChange={(e) => handleChange(e.target.value)}
                 checked={filteredTags.includes(tag)}
-              ></input>
+               />
               <label htmlFor={tag}>#{tag}</label>
             </div>
           );

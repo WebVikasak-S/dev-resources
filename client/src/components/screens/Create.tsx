@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ScreenWrapper from '../hoc/ScreenWrapper';
+import ScreenWrapper from '../../Components/hoc/ScreenWrapper';
 
 const Create = () => {
   return (
@@ -43,7 +43,7 @@ const Create = () => {
                 <option>CSS</option>
                 <option>Javascript</option>
                 <option>Typescript</option>
-                <option>Tailwind CSS</option>
+                {/* <option>Tailwind CSS</option> */}
                 <option>React JS</option>
                 <option>Next JS</option>
                 <option>GitHub</option>

@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Loading from '../Loading';
+import Loading from '../../Components/Loading';
 
 const LoadingPage = () => (
   <div className="p-4 w-full h-full flex justify-center items-center">
@@ -8,12 +8,12 @@ const LoadingPage = () => (
   </div>
 );
 
-const IndexScreen = lazy(() => import('~/components/screens/Index'));
-const AboutScreen = lazy(() => import('~/components/screens/About'));
-const CreateScreen = lazy(() => import('~/components/screens/Create'));
-const ImportScreen = lazy(() => import('~/components/screens/Import'));
-const LogInSignUpScreen = lazy(() => import('~/components/screens/LogInSignUp'));
-const Page404Screen = lazy(() => import('~/components/screens/404'));
+const IndexScreen = lazy(() => import('../../Components/screens/Index'));
+const AboutScreen = lazy(() => import('../../Components/screens/About'));
+const CreateScreen = lazy(() => import('../../Components/screens/Create'));
+const ImportScreen = lazy(() => import('../../Components/screens/Import'));
+const LogInSignUpScreen = lazy(() => import('../../Components/screens/LogInSignUp'));
+// const Page404Screen = lazy(() => import('~/components/screens/404'));
 
 export const Router = () => {
   return (
@@ -35,9 +35,9 @@ export const Router = () => {
           <Route path="/login-signup">
             <LogInSignUpScreen />
           </Route>
-          <Route path="*">
+          {/* <Route path="*">
             <Page404Screen />
-          </Route>
+          </Route> */}
         </Switch>
       </Suspense>
     </BrowserRouter>

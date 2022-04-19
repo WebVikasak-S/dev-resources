@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ScreenWrapper from '../hoc/ScreenWrapper';
+import ScreenWrapper from '../../Components/hoc/ScreenWrapper';
 
 const Import = () => {
   return (

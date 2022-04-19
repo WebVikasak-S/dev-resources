@@ -3,8 +3,8 @@ import * as React from 'react';
 import { bookmarksDummy } from '../utils/db.js';
 import { useQuery } from 'react-query';
 import { BiSearchAlt } from 'react-icons/bi';
-import BookmarkCard from './BookmarkCard';
-import Loading from './Loading';
+import BookmarkCard from '../Components/BookmarkCard';
+import Loading from '../Components/Loading';
 interface IBookmark {
   // eslint-disable-next-line camelcase
   date_added: string;

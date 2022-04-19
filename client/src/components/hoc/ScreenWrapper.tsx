@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ThemeProvider } from '../contexts/ThemeContext';
-import Footer from '../Footer';
-import Navbar from '../Navbar';
-import { Head } from '../shared/Head';
+import { ThemeProvider } from '../../Components/contexts/ThemeContext';
+import Footer from '../../Components/Footer';
+import Navbar from '../../Components/Navbar';
+import { Head } from '../../Components/shared/Head';
 
 interface IScreenWrapper {
   children: React.ReactChild;
