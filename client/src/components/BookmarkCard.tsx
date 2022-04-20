@@ -44,7 +44,7 @@ const BookmarkCard = ({ propData }: IBookmarkCard) => {
               <strong>
                 <HiOutlineLink className="inline" />
               </strong>{' '}
-              - {`${propData.url.slice(0, 70)}...`}
+              - {`${propData.url.slice(0, 25)}...`}
             </p>
           </Link>
           <p>
