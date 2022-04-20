@@ -7,7 +7,7 @@ import Main from '../root/Main';
 
 const queryClient = new QueryClient();
 
-export const App = () => {
+const App = () => {
   return (
     // <HelmetProvider>
       <AuthProvider>
@@ -20,3 +20,5 @@ export const App = () => {
     // </HelmetProvider>
   );
 };
+
+export default App;
