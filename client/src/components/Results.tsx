@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as React from 'react';
 // import Pagination from '../../src/components/pagination/pagination.jsx';
 import { bookmarksDummy } from '../utils/db.js';

@@ -1,6 +1,7 @@
 import * as React from "react";
 
 interface ITagContext {
+  // eslint-disable-next-line no-unused-vars
   handleChange: (name: string) => void;
   allTags: string[];
   setAllTags: React.Dispatch<React.SetStateAction<string[]>>;
