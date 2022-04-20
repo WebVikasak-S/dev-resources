@@ -14,7 +14,7 @@ interface ITagProvider {
   children: React.ReactNode;
 }
 
-let AllTags = [
+const AllTags = [
   "Html",
   "CSS",
   "JavaScript",
@@ -29,7 +29,7 @@ export const TagProvider = ({ children }: ITagProvider) => {
   const [allTags, setAllTags] = React.useState<string[]>(AllTags);
 
   const handleChange = (name: string) => {
-    let temp = filteredTags;
+    const temp = filteredTags;
     if (temp.includes(name)) {
       temp.splice(temp.indexOf(name), 1);
     } else {

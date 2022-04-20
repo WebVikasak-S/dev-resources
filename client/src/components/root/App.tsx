@@ -1,9 +1,9 @@
 // import { HelmetProvider } from 'react-helmet-async';
-import { AuthProvider } from '../../Components/contexts/UserContext';
-import { TagProvider } from '../../Components/contexts/TagContext';
+import { AuthProvider } from '../contexts/UserContext';
+import { TagProvider } from '../contexts/TagContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import Main from '../../Components/root/Main';
+import Main from '../root/Main';
 
 const queryClient = new QueryClient();
 

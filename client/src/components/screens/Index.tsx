@@ -1,7 +1,7 @@
-import Filters from '../../Components/Filters';
-import Results from '../../Components/Results';
+import Filters from '../Filters';
+import Results from '../Results';
 import '~/styles/styles.css';
-import ScreenWrapper from '../../Components/hoc/ScreenWrapper';
+import ScreenWrapper from '../hoc/ScreenWrapper';
 
 function Index() {
   // const { state } = useAuthState();
