@@ -2,17 +2,18 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { CgMenu, CgClose } from 'react-icons/cg';
 import { RiStackFill } from 'react-icons/ri';
-import { ThemeContext } from './contexts/ThemeContext';
+// import { ThemeContext } from './contexts/ThemeContext';
+import ThemeToggle from './Theme';
 
 const Navbar = () => {
-  const { theme, themeChangeHandler, isDark } = React.useContext(ThemeContext);
+  // const { theme, themeChangeHandler, isDark } = React.useContext(ThemeContext);
   const [isOpen, setIsOpen] = React.useState(false);
   const menuHandler = () => {
     setIsOpen(!isOpen);
   };
-  React.useEffect(() => {
-    console.log('Theme in Navbar - ', theme);
-  }, [theme]);
+  // React.useEffect(() => {
+  //   console.log('Theme in Navbar - ', theme);
+  // }, [theme]);
   return (
     <header className="w-full flex items-center justify-center bg-base-200 border-2  border-black px-4 py-2">
       <p className="text-4xl mx-2">
@@ -22,7 +23,8 @@ const Navbar = () => {
         <h1 className="text-3xl font-bold underline">Dev-Resource</h1>
       </Link>
       <div className=" hidden md:flex  md:justify-between md:items-center">
-        <input type="checkbox" className="toggle mr-4" onChange={themeChangeHandler} checked={isDark} />
+        {/* <input type="checkbox" className="toggle mr-4" onChange={themeChangeHandler} checked={isDark} /> */}
+        <ThemeToggle />
         <Link to="/about">
           <button className="btn btn-primary mr-2">About</button>
         </Link>
@@ -42,7 +44,8 @@ const Navbar = () => {
       {isOpen ? (
         <div className="absolute z-20 w-[95vw] h-[100vh] bg-transparent top-0 right-0" onClick={menuHandler}>
           <div className="absolute z-30 menu top-[80px] right-1 bg-base-200 p-2 px-6 border-2 flex flex-col items-center w-full mr-1.5">
-            <input type="checkbox" className="toggle mb-2" onChange={themeChangeHandler} checked={isDark} />
+            {/* <input type="checkbox" className="toggle mb-2" onChange={themeChangeHandler} checked={isDark} /> */}
+            <ThemeToggle />
             <Link to="/about">
               <button className="btn btn-primary w-50 mb-2 nav-style">About</button>
             </Link>
