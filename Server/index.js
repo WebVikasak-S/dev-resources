@@ -4,11 +4,14 @@ const dotenv = require("dotenv");
 const cheerio = require("cheerio");
 const fs = require("fs");
 const { v4: uuidv4 } = require("uuid");
+const multer = require("multer");
 const path = require("path");
+const helpers = require("./utils/helper");
 const { bookmarks } = require("./db");
 const mongoose = require("mongoose");
 const Bookmarks = require("./model/bookmarkModel");
 const cors = require("cors");
+const LinkPreview = require("./utils/linkPreview");
 
 // Express App Initialization
 const app = express();
@@ -54,6 +57,7 @@ async function getBookmarks() {
   return data;
 }
 
+// Create a Bookmark
 async function createBookmark(data) {
   if (data) {
     const temp = new Bookmarks(data);
@@ -68,6 +72,7 @@ async function createBookmark(data) {
   }
 }
 
+// Get Bookmark By ID
 async function getBookmarkById(id) {
   if (id) {
     const temp = await Bookmarks.findById(id);
@@ -78,12 +83,47 @@ async function getBookmarkById(id) {
   }
 }
 
-async function updateBookmarkById(data) {}
+// Update a Bookmark
+async function updateBookmarkById(data) {
+  if (data) {
+    console.log("Query ID - ", data._id);
+    const temp = await Bookmarks.findByIdAndUpdate(
+      data._id,
+      {
+        name: data.name,
+        url: data.url,
+        tags: data.tags,
+      },
+      function (err, docs) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Updated Doc : ", docs);
+        }
+      }
+    );
+    console.log("Return - ", temp);
+    return temp;
+  } else {
+    return "Error in Query";
+  }
+}
+
+const base = `
+Hello Peeps...👋
+  Available Endpoints - 
+  1) - /getAllBookmarks
+  2) - /createBookmark
+  3) - /getBookmarkByID
+  4) - /updateBookmarkById
+  5) - /importBookmarks
+  6) - /getLinkPreview
+`;
 
 // routes setting
 
 app.get("/", async (req, res) => {
-  res.send("Hello Peep..🔥");
+  res.send(base);
 });
 
 // Get All Bookmarks From Database
@@ -116,6 +156,7 @@ app.get("/getBookmarkByID", async (req, res) => {
     console.log("Requested ID - ", req.body.id);
     const bookmarkById = await getBookmarkById(req.body.id);
     console.log("Requested Doc - ", bookmarkById);
+    res.status(200).send(bookmarkById);
   } catch (err) {
     console.log(err);
     res.sendStatus(404).send(err);
@@ -126,9 +167,10 @@ app.get("/getBookmarkByID", async (req, res) => {
 app.post("/updateBookmarkById", async (req, res) => {
   try {
     if (req.body) {
-      console.log("ID? - ", req.body.id);
-      const newBookmark = await updateBookmarkById(req.body.id);
-      res.status(200).send(`Updated bookmark -> Id - ${req.body} - `);
+      console.log("Before - ", req.body);
+      const newBookmark = await updateBookmarkById(req.body);
+      console.log("After - ", newBookmark);
+      res.status(200).send("Bookmark Updates Successfully");
     } else {
       res.status(404).send("No Parameter..!");
     }
@@ -141,29 +183,80 @@ app.post("/updateBookmarkById", async (req, res) => {
 // Route And Logic to Get and Parse an
 // HTML file to extract the bookmarks from it
 
-const filePath = path.join(__dirname, "./assets/uploads/demoBookmarks1.html");
-const $ = cheerio.load(fs.readFileSync(filePath));
-let newBookmarks = [];
+// Storage Defination for Multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "assets/uploads/");
+  },
+
+  // By default, multer removes file extensions so let's add them back
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+// Cheerio function to Parse File and extract Data from it into an array
+function parseHTML(uploadedFilePath) {
+  const filePath = path.join(__dirname, uploadedFilePath);
+  const $ = cheerio.load(fs.readFileSync(filePath));
+  let newBookmarks = [];
+  let aTags = $("a");
+  $(aTags).each((i, tag) => {
+    let object = {
+      date_added: "",
+      guid: uuidv4(),
+      id: "",
+      name: $(tag).text(),
+      type: "",
+      url: $(tag).attr("href"),
+      tags: [],
+    };
+    newBookmarks.push(object);
+  });
+  return newBookmarks;
+}
 
 app.post("/importBookmarks", (req, res) => {
-  //   let aTags = $("a");
-  //   $(aTags).each((i, tag) => {
-  //     let object = {
-  //       date_added: "",
-  //       guid: uuidv4(),
-  //       id: "",
-  //       name: $(tag).text(),
-  //       type: "",
-  //       url: $(tag).attr("href"),
-  //       tags: [],
-  //     };
-  //     newBookmarks.push(object);
-  //   });
   try {
-    req.on("data", (data) => {
-      console.log(data);
+    let upload = multer({
+      storage: storage,
+      fileFilter: helpers.htmlFilter,
+    }).single("bookmarks");
+    upload(req, res, function (err) {
+      // req.file contains information of uploaded file
+      // req.body contains information of text fields, if there were any
+
+      if (req.fileValidationError) {
+        return res.send(req.fileValidationError);
+      } else if (!req.file) {
+        return res.send("Please select an HTML file to upload");
+      } else if (err instanceof multer.MulterError) {
+        return res.send(err);
+      } else if (err) {
+        return res.send(err);
+      }
+
+      // Display uploaded image for user validation
+      let response = parseHTML(req.file.path);
+      res
+        .status(200)
+        .send({ message: "File Uploaded and Parsed", data: response });
     });
-    res.status(200).send(req.file);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
+// Get Link preview DATA
+app.get("/getLinkPreview", async (req, res) => {
+  try {
+    const url = req.body.url;
+    const previewData = await LinkPreview(url);
+    res.status(200).send(previewData);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);

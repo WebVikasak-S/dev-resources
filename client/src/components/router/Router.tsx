@@ -8,12 +8,12 @@ const LoadingPage = () => (
   </div>
 );
 
-const IndexScreen = lazy(() => import('~/components/screens/Index'));
-const AboutScreen = lazy(() => import('~/components/screens/About'));
-const CreateScreen = lazy(() => import('~/components/screens/Create'));
-const ImportScreen = lazy(() => import('~/components/screens/Import'));
-const LogInSignUpScreen = lazy(() => import('~/components/screens/LogInSignUp'));
-const Page404Screen = lazy(() => import('~/components/screens/404'));
+const IndexScreen = lazy(() => import('../screens/Index'));
+const AboutScreen = lazy(() => import('../screens/About'));
+const CreateScreen = lazy(() => import('../screens/Create'));
+const ImportScreen = lazy(() => import('../screens/Import'));
+const LogInSignUpScreen = lazy(() => import('../screens/LogInSignUp'));
+// const Page404Screen = lazy(() => import('~/components/screens/404'));
 
 export const Router = () => {
   return (
@@ -35,9 +35,9 @@ export const Router = () => {
           <Route path="/login-signup">
             <LogInSignUpScreen />
           </Route>
-          <Route path="*">
+          {/* <Route path="*">
             <Page404Screen />
-          </Route>
+          </Route> */}
         </Switch>
       </Suspense>
     </BrowserRouter>

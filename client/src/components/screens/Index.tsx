@@ -1,6 +1,3 @@
-import { useAuthState } from '~/components/contexts/UserContext';
-import { SignInButton } from '~/components/domain/auth/SignInButton';
-import { SignOutButton } from '~/components/domain/auth/SignOutButton';
 import Filters from '../Filters';
 import Results from '../Results';
 import '~/styles/styles.css';

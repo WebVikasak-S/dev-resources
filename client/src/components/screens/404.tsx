@@ -1,4 +1,4 @@
-import { Head } from '~/components/shared/Head';
+import { Head } from '../shared/Head';
 
 function Page404() {
   return (

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TiTag } from 'react-icons/ti';
-import { TagContext } from './contexts/TagContext';
+import { TagContext } from '../context/TagContext';
 
 const Filters = () => {
   const { allTags, filteredTags, setFilteredTags, handleChange } = React.useContext(TagContext);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TagContext } from './TagContext';
+import { TagContext } from '../../context/TagContext';
 // import { themeChange } from 'theme-change';
 
 interface IThemeContext {
