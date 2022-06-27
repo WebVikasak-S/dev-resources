@@ -1,4 +1,5 @@
 import * as React from 'react';
+// import Pagination from '../../src/components/pagination/pagination.jsx';
 import { bookmarksDummy } from '../utils/db.js';
 import { useQuery } from 'react-query';
 import { BiSearchAlt } from 'react-icons/bi';
@@ -14,6 +15,8 @@ interface IBookmark {
   url: string;
   tags: string[];
 }
+
+const pageSize = 50;
 
 const Results = () => {
   const [page, setPage] = React.useState<number>(0);
@@ -44,17 +47,17 @@ const Results = () => {
 
   return (
     <div className="results flex flex-col flex-1 items-center justify-start border-2 mx-1 p-2 overflow-y-hidden overflow-x-hidden md:overflow-y-scroll h-[75vh]">
-      <div className="border-2 m-1 mx-4 p-2 flex h-fit w-full ">
+      <div className=" m-1 mx-4 p-2 flex h-fit w-full ">
         <input
-          className="outline-none p-2 flex-1"
+          className="outline-none p-2 flex-1 text-black rounded"
           placeholder="Search Resource..."
           name="search"
           type="text"
           onChange={(event) => setSearchTerm(event.target.value)}
         />
-        <button className="btn btn-primary text-2xl">
+        <div className="btn btn-primary text-2xl rounded-r-lg ml-2">
           <BiSearchAlt />
-        </button>
+        </div>
       </div>
       <p className="text-xl font-semibold underline">Results {isFetching ? 'Updating...' : ''}</p>
       {isLoading ? (
