@@ -1,4 +1,5 @@
 // import { HelmetProvider } from 'react-helmet-async';
+import React from 'react';
 import { AuthProvider } from '../contexts/UserContext';
 import { TagProvider } from '../contexts/TagContext';
 import { QueryClient, QueryClientProvider } from 'react-query';
@@ -10,13 +11,13 @@ const queryClient = new QueryClient();
 const App = () => {
   return (
     // <HelmetProvider>
-      <AuthProvider>
-        <TagProvider>
-          <QueryClientProvider client={queryClient}>
-            <Main />
-          </QueryClientProvider>
-        </TagProvider>
-      </AuthProvider>
+    <AuthProvider>
+      <TagProvider>
+        <QueryClientProvider client={queryClient}>
+          <Main />
+        </QueryClientProvider>
+      </TagProvider>
+    </AuthProvider>
     //  </HelmetProvider>
   );
 };
