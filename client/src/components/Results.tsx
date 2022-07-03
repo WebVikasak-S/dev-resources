@@ -134,13 +134,16 @@ const Results = () => {
                 type="text"
                 placeholder="Type here"
                 className="input input-bordered w-1/4 max-w-xs"
-                value={pageNumber}
+                value={isNaN(pageNumber) ? "" : pageNumber}
                 onChange={(e: any) => {
                   setPageNumber(parseInt(e.target.value));
                 }}
-                onKeyPressCapture={(e: any) => {
+                onKeyUp={(e: any) => {
                   console.log('onKeyDown', e.target.value);
                   if (e.key === 'Enter') {
+                    if (isNaN(pageNumber)) {
+                      setPage(1);
+                    }
                     if (pageNumber >= 0 && pageNumber <= Math.ceil(bookmarksLength / 10)) {
                       setPage(pageNumber - 1);
                     }

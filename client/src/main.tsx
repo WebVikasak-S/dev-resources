@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import App from '../src/Components/root/App';
+import App from './Components/root/App';
 
 
 const queryClient = new QueryClient();
@@ -14,7 +14,6 @@ ReactDOM.render(
       <App />
       <ReactQueryDevtools />
     </QueryClientProvider>
-    ,
   </React.StrictMode>,
   document.getElementById('root')
 );
