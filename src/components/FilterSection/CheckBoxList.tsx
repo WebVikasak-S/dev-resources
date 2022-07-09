@@ -1,7 +1,7 @@
 import React from "react";
 import Checkbox from "./CheckBox";
-// import { CheckboxState } from "../Tree/Tree";
-import styles from "./checkboxlist.module.scss";
+import { CheckboxState } from "./Tree/Tree";
+// import styles from "./checkboxlist.module.scss";
 
 export type Item = {
   id: number;
@@ -43,13 +43,13 @@ const CheckboxList: React.FC<CheckboxListProps> = ({
   };
 
   return (
-    <ul className={styles.list} style={{ paddingLeft: indentLevel * 20 }}>
+    <ul className="p-0 m-0 list-none" style={{ paddingLeft: indentLevel * 20 }}>
       {idsToRender.map((id) => {
         const item = items.find((i) => i.id === id);
         const checkboxState = getStateForId(id);
         return (
           <React.Fragment key={item.id}>
-            <li>
+            <li className="p-1 text-stone-700 list-none">
               <Checkbox
                 onClick={() => onClick(item.id)}
                 isChecked={checkboxState === CheckboxState.CHECKED}

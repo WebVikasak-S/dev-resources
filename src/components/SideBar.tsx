@@ -10,6 +10,7 @@ import {
   Checkbox,
   Stack,
 } from '@chakra-ui/react';
+import Tree from './FilterSection/Tree/Tree';
 
 const SideBar = () => {
   const [checkedItems, setCheckedItems] = React.useState([false, false, false]);
@@ -19,7 +20,8 @@ const SideBar = () => {
 
   return (
     <Box w="20%" p={4} borderRight="2px">
-      <VStack spacing={4} align="stretch">
+      <Tree />
+      {/* <VStack spacing={4} align="stretch">
         <Accordion defaultIndex={[0]} allowMultiple>
           <AccordionItem>
             <h2>
@@ -89,7 +91,7 @@ const SideBar = () => {
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
-      </VStack>
+      </VStack> */}
     </Box>
   );
 };
