@@ -7,8 +7,8 @@ generator client {
 
 datasource db {
     provider = "postgres"
-    url      = "file:./db.sqlite"
-    // url      = env("DATABASE_URL")
+    // url      = "file:./db.sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model Example {
