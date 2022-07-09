@@ -5,8 +5,10 @@
 
 ## Run the Project
 ### From the root directory, install the dependencies using yarn and then run the development server
+### You must have docker installed in your system for the docker compose command to work and deploy a postgres db in your local system using the docker image and running it.
 ```sh
 yarn
+docker compose up -d
 yarn run dev
 ```
 
