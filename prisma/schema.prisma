@@ -61,10 +61,15 @@ model VerificationToken {
     @@unique([identifier, token])
 }
 
+model Recource {
+    id Int @id @default(autoincrement())
+    
+}
+
 model Tag {
     id  String  @id @default(cuid())
     name String  
-    category String
+    category String[]
 }
 
 model Category {
