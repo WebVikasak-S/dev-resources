@@ -16,7 +16,10 @@ import Head from "next/head";
 import Layout from "../hoc/Layout";
 import { trpc } from "../utils/trpc";
 import { ThemeSwitch } from "./";
+import { About, Forms } from "./index";
 // import { colors } from "../utils/theme";
+
+const TextLinks = "cursor-pointer"
 
 const Navbar = () => {
   const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
@@ -43,9 +46,15 @@ const Navbar = () => {
       </InputGroup>
       {/* <Spacer /> */}
       <Flex gap="5" align="center">
-        <Text fontSize="md">About</Text>
-        <Text fontSize="md">Create</Text>
-        <Text fontSize="md">Import</Text>
+        {/* <Text fontSize="md">About</Text> */}
+        <About />
+        {/* <Text fontSize="md" className="cursor-pointer">
+          Create
+        </Text> */}
+        <Forms/>
+        <Text fontSize="md" className="cursor-pointer">
+          Import
+        </Text>
         <Button colorScheme="teal">Login/SignUp</Button>
         <ThemeSwitch />
       </Flex>
