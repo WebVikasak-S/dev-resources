@@ -7,8 +7,8 @@ generator client {
 
 datasource db {
     provider = "postgres"
-    url      = "file:./db.sqlite"
-    // url      = env("DATABASE_URL")
+    // url      = "file:./db.sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model Example {
@@ -61,10 +61,15 @@ model VerificationToken {
     @@unique([identifier, token])
 }
 
+model Recource {
+    id Int @id @default(autoincrement())
+    
+}
+
 model Tag {
     id  String  @id @default(cuid())
     name String  
-    category String
+    category String[]
 }
 
 model Category {
