@@ -3,14 +3,12 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalCloseButton,
   ModalFooter,
   Button,
   Text,
   useDisclosure,
-  Flex,
   Heading,
   Center,
 } from '@chakra-ui/react';
@@ -35,7 +33,6 @@ const About = () => {
       <Modal onClose={onClose} size="full" isOpen={isOpen}>
         <ModalOverlay className='transition-opacity'/>
         <ModalContent>
-          {/* <ModalHeader className="place-content-center">About us</ModalHeader> */}
           <ModalCloseButton />
           <ModalBody>
             <br />
