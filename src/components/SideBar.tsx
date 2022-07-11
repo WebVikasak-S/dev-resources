@@ -7,91 +7,51 @@ import {
   AccordionButton,
   Box,
   VStack,
-  Checkbox,
-  Stack,
+  Text,
 } from '@chakra-ui/react';
-import Tree from './FilterSection/Tree/Tree';
+import CheckBoxList from './FilterSection/CheckBoxList';
 
 const SideBar = () => {
-  const [checkedItems, setCheckedItems] = React.useState([false, false, false]);
-
-  const allChecked = checkedItems.every(Boolean);
-  const isIndeterminate = checkedItems.some(Boolean) && !allChecked;
+  const categories = ['FrontEnd', 'Backend', 'DataBase', 'Designing', 'Cloud'];
 
   return (
-    <Box w="20%" p={4} borderRight="2px">
-      <Tree />
-      {/* <VStack spacing={4} align="stretch">
+    <Box w="20%" p={4} borderRight="2px" className="overflow-auto">
+      <VStack spacing={4} align="stretch">
         <Accordion defaultIndex={[0]} allowMultiple>
           <AccordionItem>
             <h2>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
-                  <Checkbox
-                    isChecked={allChecked}
-                    isIndeterminate={isIndeterminate}
-                    onChange={(e) =>
-                      setCheckedItems([e.target.checked, e.target.checked, e.target.checked])
-                    }
-                  >
-                    Parent Checkbox
-                  </Checkbox>
+                  FrontEnd
+                  {/* {categories.slice(0, 5).map((category) => {
+                    return <Text>{category}</Text>;
+                  })} */}
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              <Stack pl={6} mt={1} spacing={1}>
-                <Checkbox
-                  isChecked={checkedItems[0]}
-                  onChange={(e) =>
-                    setCheckedItems([e.target.checked, checkedItems[1]])
-                  }
-                >
-                  Child Checkbox 1
-                </Checkbox>
-                <Checkbox
-                  isChecked={checkedItems[1]}
-                  onChange={(e) =>
-                    setCheckedItems([checkedItems[0], e.target.checked])
-                  }
-                >
-                  Child Checkbox 2
-                </Checkbox>
-                <Checkbox
-                  isChecked={checkedItems[2]}
-                  onChange={(e) =>
-                    setCheckedItems([
-                      checkedItems[0],
-                      checkedItems[1],
-                      e.target.checked,
-                    ])
-                  }
-                >
-                  Child Checkbox 3
-                </Checkbox>
-              </Stack>
+              <CheckBoxList />
             </AccordionPanel>
           </AccordionItem>
-
           <AccordionItem>
             <h2>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
-                  Section 2 title
+                  BackendEnd
+                  {/* {categories.slice(0, 5).map((category) => {
+                    return <Text>{category}</Text>;
+                  })} */}
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              <CheckBoxList />
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
-      </VStack> */}
+      </VStack>
     </Box>
   );
 };

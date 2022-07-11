@@ -1,68 +1,104 @@
-import React from "react";
-import Checkbox from "./CheckBox";
-import { CheckboxState } from "./Tree/Tree";
-// import styles from "./checkboxlist.module.scss";
+import React from 'react';
+import { Box, Checkbox, CheckboxGroup, Stack } from '@chakra-ui/react';
 
-export type Item = {
-  id: number;
-  name: string;
-  parentId: number;
-};
-
-type CheckboxListProps = {
-  items: Item[];
-  idsToRender?: number[];
-  indentLevel?: number;
-  onClick?: (id: number) => void;
-  getStateForId: (id: number) => CheckboxState;
-};
-
-const CheckboxList: React.FC<CheckboxListProps> = ({
-  items,
-  getStateForId,
-  idsToRender = [],
-  indentLevel = 0,
-  onClick = () => {},
-}) => {
-  if (!idsToRender.length) {
-    idsToRender = items.filter((i) => !i.parentId).map((i) => i.id);
-  }
-
-  const getChildNodes = (parentId: number) => {
-    const nodeItems = items.filter((i) => i.parentId === parentId);
-    if (!nodeItems.length) return null;
-    return (
-      <CheckboxList
-        items={items}
-        idsToRender={nodeItems.map((i) => i.id)}
-        indentLevel={indentLevel + 1}
-        onClick={onClick}
-        getStateForId={getStateForId}
-      />
-    );
-  };
+const CheckBoxList = () => {
+  const tags = [
+    'HTML',
+    'CSS',
+    'JS',
+    'ES 6',
+    'JavaScript',
+    'React',
+    'React JS',
+    'React Native',
+    'Tailwind',
+    'Tailwind CSS',
+    'Microsoft',
+    'Microsoft Office',
+    'TS',
+    'Typescript',
+    'Git',
+    'Github',
+    'Python',
+    'GFG',
+    'Geegforgeeks',
+    'Learning',
+    'Online COurse',
+    'Courses',
+    'Udemy',
+    'Coding',
+    'Competitive Coding',
+    'Editors',
+    'online editors',
+    'Editing Softwares',
+    'Softwares',
+    'PDF editors',
+    'Convertors',
+    'File Convertors',
+    'Liberary',
+    'Colors',
+    'Colors Liberary',
+    'Resume',
+    'Transfer',
+    'File Transfer',
+    'SVG',
+    'PNG',
+    'JPEG',
+    'JPG',
+    'Photoes',
+    'Online Photoes',
+    'HD Photoes',
+    'Wallpapers',
+    'Fonts',
+    'Icons',
+    'SVG Icons',
+    'UI',
+    'UX',
+    'UI/UX',
+    'GIFS',
+    'Media',
+    'API',
+    'Dummy API',
+    'SnadBoxes',
+    'Code Editors',
+    'Languages',
+    'Programming Languages',
+    'Frontend Languages',
+    'Backend Languages',
+    'Database',
+    'DB',
+    'SQL',
+    'MY SQL',
+    'Localhost',
+    'Anime',
+    'Torrents',
+    'Networking',
+    'Security',
+    'Network Security',
+    'Cloud',
+    'Cloud Storage',
+    'Investment',
+    'Investing',
+    'Books',
+    'Youtube',
+    'Youtube Videos',
+    'Careers',
+    'Pinterest',
+  ];
 
   return (
-    <ul className="p-0 m-0 list-none" style={{ paddingLeft: indentLevel * 20 }}>
-      {idsToRender.map((id) => {
-        const item = items.find((i) => i.id === id);
-        const checkboxState = getStateForId(id);
-        return (
-          <React.Fragment key={item.id}>
-            <li className="p-1 text-stone-700 list-none">
-              <Checkbox
-                onClick={() => onClick(item.id)}
-                isChecked={checkboxState === CheckboxState.CHECKED}
-                isIndeterminate={checkboxState === CheckboxState.INDETERMINATE}
-              />
-              {item.name}
-            </li>
-            {getChildNodes(item.id)}
-          </React.Fragment>
-        );
-      })}
-    </ul>
+    <Box className="p-4">
+      <CheckboxGroup colorScheme="teal">
+        <Stack direction="column">
+          {tags.slice(0, 10).map((tag) => {
+            return <Checkbox value="naruto">{tag}</Checkbox>;
+          })}
+          {/* <Checkbox value="sasuke">Sasuke</Checkbox>
+          <Checkbox value="kakashi">Kakashi</Checkbox> */}
+        </Stack>
+      </CheckboxGroup>
+    </Box>
   );
 };
 
-export default CheckboxList;
+export default CheckBoxList;
