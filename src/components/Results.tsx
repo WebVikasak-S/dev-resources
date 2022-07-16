@@ -11,6 +11,7 @@ const Results = () => {
   // const { data: tags, success, isloading } = response;
 
   const createTagMutation = trpc.useMutation(['tags.create-tag']);
+  const updateTagMutation = trpc.useMutation(['tags.update-tag']);
 
   const createTagHandler = () => {
     const tag = {
@@ -19,6 +20,12 @@ const Results = () => {
     };
     createTagMutation.mutate(tag);
   };
+
+  const updateTagHandler = () => {
+    const tag = {
+      
+    }
+  }
 
   return (
     <>
@@ -30,7 +37,7 @@ const Results = () => {
         align="center"
       >
         Results
-        <Button onClick={createTagHandler}>Create Tag</Button>
+        <Button onClick={updateTagHandler}>Create Tag</Button>
         <Flex>{tags.data && tags.data.map((tag) => <p>{tag.name}</p>)}</Flex>
         <Footer />
       </Flex>
