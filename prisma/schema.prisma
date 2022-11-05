@@ -3,14 +3,12 @@
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider             = "mysql"
-//   url                  = env("DATABASE_URL")
-  url = env("SHADOW_DATABASE_URL")
-  referentialIntegrity = "prisma"
+  provider             = "postgresql"
+  url                  = env("DATABASE_URL")
+  // url                  = env("SHADOW_DATABASE_URL")
 }
 
 model Example {
@@ -80,18 +78,16 @@ model Recource {
 }
 
 model Tag {
-  id         String     @id @default(cuid())
+  id         String    @id @default(cuid())
   name       String
-  categories Category[]
-  //   Recource   Recource?  @relation(fields: [recourceId], references: [id])
-  //   recourceId Int?
+  Category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId String?
 }
 
 model Category {
-  id    String  @id @default(cuid())
-  name  String
-  Tag   Tag?    @relation(fields: [tagId], references: [id])
-  tagId String?
+  id   String @id @default(cuid())
+  name String
+  tags Tag[]
 }
 
 enum Role {

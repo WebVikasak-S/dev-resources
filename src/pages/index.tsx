@@ -1,14 +1,17 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Layout from "../hoc/Layout";
-import { trpc } from "../utils/trpc";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { Results } from '../components';
+import Layout from '../hoc/Layout';
+import { trpc } from '../utils/trpc';
 
-const Home: NextPage = () => {
-  const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+const Home: NextPage = (props) => {
+  const hello = trpc.useQuery(['example.hello', { text: 'from tRPC' }]);
 
   return (
     <Layout title="Home | Dev-resources">
-      <h1>Hello Dev-resource</h1>
+      <div className="flex flex-col w-full h-full">
+        <Results />
+      </div>
     </Layout>
   );
 };

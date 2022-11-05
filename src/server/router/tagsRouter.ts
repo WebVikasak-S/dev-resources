@@ -15,10 +15,10 @@ export const tagsRouter = createRouter()
     }),
 
     async resolve({ ctx, input }) {
+      const { name, category } = input;
       const tag = await ctx.prisma!.tag.create({
         data: {
-          name: input.name,
-          category: input.category,
+          name,
         },
       });
       return tag;
@@ -26,7 +26,6 @@ export const tagsRouter = createRouter()
   })
   .mutation('update-tag', {
     input: z.object({
-      
       name: z.string(),
       category: z.string().array(),
     }),

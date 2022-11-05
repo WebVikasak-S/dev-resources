@@ -1,7 +1,7 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import { Navbar, Footer, SideBar, Results } from "../components";
-import { ILayoutProps } from "../interface";
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { Navbar, Footer, SideBar, Results } from '../components';
+import { ILayoutProps } from '../interface';
 
 const Layout: React.FC<ILayoutProps> = ({
   children,
@@ -19,7 +19,7 @@ const Layout: React.FC<ILayoutProps> = ({
         {withNavBar && <Navbar />}
         <main className="flex flex-1">
           <SideBar />
-          <Results />
+          {children}
         </main>
       </div>
     </>
