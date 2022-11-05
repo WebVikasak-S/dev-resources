@@ -1,9 +1,5 @@
-import * as React from "react";
-
-interface ILayoutProps {
+export interface ILayoutProps {
   children: React.ReactNode;
   title: string;
   withNavBar?: boolean;
 }
-
-export { ILayoutProps };
