@@ -22,15 +22,13 @@ const Results = () => {
   };
 
   const updateTagHandler = () => {
-    const tag = {
-      
-    }
-  }
+    const tag = {};
+  };
 
   return (
     <>
       <Flex
-        w="80%"
+        w="100%"
         p={4}
         direction="column"
         justify="space-between"
